@@ -1,0 +1,217 @@
+ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.yunnex.boot.framework</groupId>
+  <artifactId>boot-core</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+     <build>
+         <plugins>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-compiler-plugin</artifactId>
+                 <configuration>
+                     <source>1.7</source>
+                     <target>1.7</target>
+                 </configuration>
+             </plugin>
+         </plugins>
+     </build>
+     <packaging>jar</packaging>
+
+  <name>boot-core</name>
+  <url>http://maven.apache.org</url>
+  
+  <!-- Spring boot 父引用-->
+  <parent>
+  		<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter-parent</artifactId>
+    	<version>1.5.0.RELEASE</version>
+  </parent>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <shiro.version>1.3.2</shiro.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    
+    <!-- Spring boot 核心web  start -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <!-- Spring boot 核心web  end -->
+    
+    <!-- Spring boot 日志支持 start  -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-logging</artifactId>
+	</dependency>
+	<!-- Spring boot 日志支持 end  -->
+	
+	<!-- Spring boot 整合 myBatis  start -->
+	<dependency>
+	    <groupId>org.mybatis.spring.boot</groupId>
+	    <artifactId>mybatis-spring-boot-starter</artifactId>
+	    <version>1.3.1</version>
+	</dependency>
+	
+	
+	<dependency>
+	    <groupId>org.springframework.cloud</groupId>
+	    <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+	</dependency>
+
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>fastjson</artifactId>
+		<version>1.2.8</version>
+	</dependency>
+	
+	<dependency>
+      	<groupId>javax.mail</groupId>
+      	<artifactId>mail</artifactId>
+      	<version>1.4.4</version>
+    </dependency>
+	
+    <dependency>  
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-starter-mail</artifactId>  
+    </dependency>  
+
+    <dependency>  
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-starter-velocity</artifactId>  
+        <version>1.4.7.RELEASE</version>
+    </dependency>  
+    
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    
+    <dependency>
+	    <groupId>io.netty</groupId>
+	    <artifactId>netty-all</artifactId>
+	    <version>4.1.22.Final</version>
+	</dependency>
+    
+    <!-- 
+     devtools可以实现热部署。devtools会监听classpath下的文件变动，并且会立即重启应用（发生在保存时机），注意：因为其采用的虚拟机机制，该项重启是很快的
+            如果设置SpringApplication.setRegisterShutdownHook(false)，则自动重启将不起作用。
+            设置 spring.devtools.restart.enabled 属性为false，可以关闭该特性。
+    -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <optional>true</optional>
+        <!-- optional=true,依赖不会传递，-->
+    </dependency>
+	
+	 <!--分页插件-->
+	<dependency>
+	    <groupId>com.github.pagehelper</groupId>
+	    <artifactId>pagehelper</artifactId>
+	    <version>4.2.1</version>
+	</dependency>
+	<!--通用Mapper-->
+	<dependency>
+	    <groupId>tk.mybatis</groupId>
+	    <artifactId>mapper</artifactId>
+	    <version>3.3.9</version>
+	</dependency>
+	<!-- Spring boot 整合 myBatis  end -->
+	
+	<!-- HttpClient start -->
+	<dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpclient</artifactId>
+	    <version>4.5.2</version>
+	</dependency>
+	
+	<!-- shiro -->
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-spring</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-ehcache</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+    
+    <!-- Eureka start -->
+    
+    <dependency>
+        <!-- Eureka service registration -->
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-eureka-server</artifactId>
+        <version>1.3.5.RELEASE</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-eureka</artifactId>
+        <version>1.3.5.RELEASE</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-ribbon</artifactId>
+        <version>1.3.5.RELEASE</version>
+    </dependency>
+   
+   	<dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-actuator</artifactId>
+	    <version>1.3.5.RELEASE</version>
+	</dependency>
+   
+    <dependency>  
+        <groupId>org.springframework.cloud</groupId>  
+        <artifactId>spring-cloud-starter-hystrix</artifactId>  
+        <version>1.3.5.RELEASE</version>
+    </dependency>  
+    
+    <dependency>  
+        <groupId>org.aspectj</groupId>  
+        <artifactId>aspectjrt</artifactId>  
+        <version>1.7.1</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.aspectj</groupId>  
+        <artifactId>aspectjweaver</artifactId>  
+        <version>1.7.1</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.springframework</groupId>  
+        <artifactId>spring-aspects</artifactId>  
+    </dependency> 
+        
+  </dependencies>
+  
+  <dependencyManagement>
+     <dependencies>
+         <dependency>
+             <groupId>org.springframework.cloud</groupId>
+             <artifactId>spring-cloud-dependencies</artifactId>
+<!--              <version>Brixton.SR5</version> -->
+             <version>Dalston.SR3</version>
+             
+             <type>pom</type>
+             <scope>import</scope>
+         </dependency>
+     </dependencies>
+ </dependencyManagement>
+</project>

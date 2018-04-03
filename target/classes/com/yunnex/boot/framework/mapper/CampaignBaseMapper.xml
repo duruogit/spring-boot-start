@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.yunnex.boot.framework.dao.CampaignBaseMapper">
+
+    <resultMap id="CampaignBaseMap" type="com.yunnex.boot.framework.entity.CampaignBase">
+        <result property="id" column="id"/>
+        <result property="campBaseBizId" column="camp_base_biz_id"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="status" column="status"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="channel" column="channel"/>
+        <result property="startTime" column="start_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="deleteTime" column="delete_time"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="columns">
+        <![CDATA[
+
+        id, camp_base_biz_id, shop_id, status, name, type, channel, start_time, end_time, is_deleted, delete_time, create_time, update_time
+
+        ]]>
+    </sql>
+
+    <sql id="where">
+        <where>
+            <if test="id != null and id != '' ">
+                AND id = #{id}
+            </if>
+            <if test="campBaseBizId != null and campBaseBizId != '' ">
+                AND camp_base_biz_id = #{campBaseBizId}
+            </if>
+            <if test="shopId != null and shopId != '' ">
+                AND shop_id = #{shopId}
+            </if>
+            <if test="status != null and status != '' ">
+                AND status = #{status}
+            </if>
+            <if test="name != null and name != '' ">
+                AND name = #{name}
+            </if>
+            <if test="type != null and type != '' ">
+                AND type = #{type}
+            </if>
+            <if test="channel != null and channel != '' ">
+                AND channel = #{channel}
+            </if>
+            <if test="isDeleted != null and isDeleted != '' ">
+                AND is_deleted = #{isDeleted}
+            </if>
+        </where>
+    </sql>
+
+    <select id="get" resultMap="CampaignBaseMap">
+        SELECT
+        <include refid="columns"/>
+        <![CDATA[
+            FROM
+                campaign_base
+            WHERE 
+                id = #{id} 
+        ]]>
+    </select>
+
+    <select id="list" resultMap="CampaignBaseMap">
+        SELECT
+        <include refid="columns"/>
+        FROM
+        campaign_base
+        <include refid="where"/>
+        order by create_time desc
+    </select>
+
+    <select id="count" resultType="long">
+        <![CDATA[
+            SELECT
+                count(1)
+            FROM
+                campaign_base
+        ]]>
+        <include refid="where"/>
+    </select>
+    
+
+
+    <select id="getByBizId" resultMap="CampaignBaseMap">
+        SELECT
+        <include refid="columns"/>
+        <![CDATA[
+            FROM
+                campaign_base
+            WHERE
+                camp_base_biz_id = #{bizId}
+        ]]>
+    </select>
+    
+</mapper>
+
